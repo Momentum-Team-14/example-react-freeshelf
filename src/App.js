@@ -6,7 +6,7 @@ import Book from './components/Book'
 function App() {
   return (
     <div className="App">
-      <h1>📚 Freeshelf</h1>
+      <h1>Freeshelf</h1>
       {books.map((bookObj) => (
         <Book book={bookObj} key={bookObj.url} />
       ))}

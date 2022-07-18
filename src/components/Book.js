@@ -1,22 +1,30 @@
 import React, { useState } from 'react'
+import placeholder from '../images/placeholder.png'
 
-export default function Book(props) {
+function Book(props) {
   const { book } = props
 
   const [expanded, setExpanded] = useState(false)
 
+  const fixBrokenImage = (e) => {
+    e.target.src = placeholder
+  }
   return (
     <div className="Book">
       <div className="book-detail">
         <h2>{book.title}</h2>
         <div>Author: {book.author}</div>
         <p>{book.shortDescription}</p>
-        <button onClick={() => setExpanded(!expanded)}>
+        <button type="button" onClick={() => setExpanded(!expanded)}>
           {expanded ? 'Hide more info' : 'Show more info'}
         </button>
       </div>
       <div className="book-cover-img">
-        <img src={book.coverImageUrl} alt={book.title} />
+        <img
+          src={book.coverImageUrl}
+          onError={fixBrokenImage}
+          alt={book.title}
+        />
       </div>
 
       {expanded ? (
@@ -25,12 +33,25 @@ export default function Book(props) {
             URL: <a href={book.url}>{book.url}</a>
           </div>
           {book.publicationDate && (
-            <div>Publication date: {book.publicationDate}</div>
+            <div>
+              Publication date:
+              {book.publicationDate}
+            </div>
           )}
-          {book.publisher && <div>Publisher: {book.publisher}</div>}
-          <p>More about this book: {book.detailedDescription}</p>
+          {book.publisher && (
+            <div>
+              Publisher:
+              {book.publisher}
+            </div>
+          )}
+          <p>
+            More about this book:
+            {book.detailedDescription}
+          </p>
         </div>
       ) : null}
     </div>
   )
 }
+
+export default Book
