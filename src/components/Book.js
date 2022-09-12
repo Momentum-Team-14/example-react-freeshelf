@@ -33,21 +33,10 @@ function Book(props) {
             URL: <a href={book.url}>{book.url}</a>
           </div>
           {book.publicationDate && (
-            <div>
-              Publication date:
-              {book.publicationDate}
-            </div>
+            <div>Publication date: {book.publicationDate}</div>
           )}
-          {book.publisher && (
-            <div>
-              Publisher:
-              {book.publisher}
-            </div>
-          )}
-          <p>
-            More about this book:
-            {book.detailedDescription}
-          </p>
+          {book.publisher && <div>Publisher: {book.publisher}</div>}
+          <p>More about this book: {book.detailedDescription}</p>
         </div>
       ) : null}
     </div>
